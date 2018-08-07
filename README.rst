@@ -36,11 +36,11 @@ Characteristics
 Requirements
 ------------
 
-* `Python <http://www.python.org>`_ 2.7, 3.5, or 3.6
+* `Python <http://www.python.org>`_ 3.5, or 3.6
 
 * `Numpy <http://numpy.scipy.org/>`_ (tested with version >=1.5.0)
 
-* `Matplotlib <http://matplotlib.sourceforge.net/>`_ 
+* `Matplotlib <http://matplotlib.sourceforge.net/>`_
 
 * Python development package is required for some distribution (e.g.,
   python-dev package for Ubuntu)
@@ -149,7 +149,7 @@ Core developers:
 * Cyrille Rosset
 * Andrea Zonca
 * Martin Reinecke
-* Leo Singer 
+* Leo Singer
 
 List of contributors: https://github.com/healpy/healpy/graphs/contributors
 

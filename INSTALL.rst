@@ -16,9 +16,9 @@ Conda forge provides a `conda
 channel <https://anaconda.org/conda-forge/healpy>`_ with a pre-compiled version of ``healpy``
 for linux 64bit and MAC OS X platforms, you can install it in Anaconda with::
 
-    conda config --add channels conda-forge 
+    conda config --add channels conda-forge
     conda install healpy
-    
+
 Source installation with Pip
 ---------------------------
 
@@ -39,7 +39,7 @@ package manager, it's even easer to install Healpy with::
 
     sudo port install py27-healpy
 
-Binary `apt-get` style packages are also available in the development versions of 
+Binary `apt-get` style packages are also available in the development versions of
 `Debian (sid) <https://packages.debian.org/sid/python-healpy>`_ and
 `Ubuntu (utopic) <http://packages.ubuntu.com/utopic/python-healpy>`_.
 
@@ -50,12 +50,12 @@ Healpy is also available in the
 `Python Package Index (PyPI) <https://pypi.python.org/pypi/healpy>`_. You can
 download it with::
 
-    curl -O https://pypi.python.org/packages/source/h/healpy/healpy-1.7.4.tar.gz
+    curl -O https://pypi.python.org/packages/source/h/healpy/healpy-1.12.4.tar.gz
 
 and build it with::
 
-    tar -xzf healpy-1.7.4.tar.gz
-    pushd healpy-1.7.4
+    tar -xzf healpy-1.12.4.tar.gz
+    pushd healpy-1.12.4
     python setup.py install --user
     popd
 
@@ -64,7 +64,7 @@ If everything goes fine, you can test it::
     python
 >>> import matplotlib.pyplot as plt
 >>> import numpy as np
->>> import healpy as hp 
+>>> import healpy as hp
 >>> hp.mollview(np.arange(12))
 >>> plt.show()
 

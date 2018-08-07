@@ -19,9 +19,6 @@
 #
 """Provides input and output functions for Healpix maps, alm, and cl.
 """
-from __future__ import division
-
-import six
 import warnings
 import astropy.io.fits as pf
 import numpy as np
@@ -77,7 +74,7 @@ def write_cl(filename, cl, dtype=np.float64, overwrite=False):
       the cl array to write to file
     overwrite : bool, optional
       If True, existing file is silently overwritten. Otherwise trying to write
-      an existing file raises an OSError (IOError for Python 2).
+      an existing file raises an OSError.
     """
     # check the dtype and convert it
     fitsformat = getformat(dtype)
@@ -154,7 +151,7 @@ def write_map(
       Default: np.float32.
     overwrite : bool, optional
       If True, existing file is silently overwritten. Otherwise trying to write
-      an existing file raises an OSError (IOError for Python 2).
+      an existing file raises an OSError.
     """
     if not hasattr(m, "__len__"):
         raise TypeError("The map must be a sequence")
@@ -179,7 +176,7 @@ def write_map(
     else:
         assert len(column_names) == len(m), "Length column_names != number of maps"
 
-    if column_units is None or isinstance(column_units, six.string_types):
+    if column_units is None or isinstance(column_units, str):
         column_units = [column_units] * len(m)
 
     # maps must have same length
@@ -608,7 +605,7 @@ def _get_hdu(input_data, hdu=None, memmap=None):
         The extracted HDU
     """
 
-    if isinstance(input_data, six.string_types):
+    if isinstance(input_data, str):
         hdulist = pf.open(input_data, memmap=memmap)
         return _get_hdu(hdulist, hdu=hdu)
 
@@ -676,7 +673,7 @@ def mwrfits(filename, data, hdu=1, colnames=None, keys=None):
     else:
         colnames = [""] * len(data)
     cols = []
-    for line in six.moves.xrange(len(data)):
+    for line in range(len(data)):
         cols.append(
             pf.Column(
                 name=colnames[line], format=getformat(data[line]), array=data[line]

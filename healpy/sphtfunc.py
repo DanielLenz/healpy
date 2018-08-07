@@ -19,7 +19,6 @@
 #
 import warnings
 import numpy as np
-import six
 
 pi = np.pi
 import warnings
@@ -433,7 +432,7 @@ def synalm(cls, lmax=None, mmax=None, new=False, verbose=True):
 
     szalm = Alm.getsize(lmax, mmax)
     alms_list = []
-    for i in six.moves.xrange(Nspec):
+    for i in range(Nspec):
         alm = np.zeros(szalm, "D")
         alm.real = np.random.standard_normal(szalm)
         alm.imag = np.random.standard_normal(szalm)
@@ -806,7 +805,7 @@ def smoothalm(
     if lonely:
         return retalm[0]
     # case 2: 2d input, check if in-place smoothing for all alm's
-    for i in six.moves.xrange(len(alms)):
+    for i in range(len(alms)):
         samearray = alms[i] is retalm[i]
         if not samearray:
             # Case 2a:
@@ -1005,8 +1004,8 @@ def new_to_old_spectra_order(cls_new_order):
     if Nspec < 0:
         raise ValueError("Input must be a list of n(n+1)/2 arrays")
     cls_old_order = []
-    for i in six.moves.xrange(Nspec):
-        for j in six.moves.xrange(i, Nspec):
+    for i in range(Nspec):
+        for j in range(i, Nspec):
             p = j - i
             q = i
             idx_new = p * (2 * Nspec + 1 - p) // 2 + q
@@ -1080,13 +1079,13 @@ def gauss_beam(fwhm, lmax=512, pol=False):
 
 
 def bl2beam(bl, theta):
-    """Computes a circular beam profile b(theta) from its 
+    """Computes a circular beam profile b(theta) from its
     transfer (or window) function b(l).
 
     Parameters
     ----------
     bl : array
-        b(l) window function of beam.        
+        b(l) window function of beam.
     theta : array
         Angle at which the beam profile will be computed.
         Has to be given in radians.
@@ -1116,13 +1115,13 @@ def bl2beam(bl, theta):
 
 
 def beam2bl(beam, theta, lmax):
-    """Computes a transfer (or window) function from its 
+    """Computes a transfer (or window) function from its
     circular beam profile b(theta).
 
     Parameters
     ----------
     beam : array
-        Circular beam profile in theta.       
+        Circular beam profile in theta.
     theta : array
         Radius at which the beam profile is given.
         Has to be given in radians with same size

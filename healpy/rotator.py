@@ -18,7 +18,6 @@
 #  For more information about Healpy, see http://code.google.com/p/healpy
 #
 import numpy as np
-import six
 import warnings
 from . import pixelfunc
 
@@ -695,7 +694,7 @@ def check_coord(c):
     """
     if c is None:
         return c
-    if not isinstance(c, six.string_types):
+    if not isinstance(c, str):
         raise TypeError(
             "Coordinate must be a string (G[alactic],"
             " E[cliptic], C[elestial]"
