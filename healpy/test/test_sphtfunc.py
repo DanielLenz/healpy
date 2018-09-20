@@ -182,6 +182,21 @@ class TestSphtFunc(unittest.TestCase):
         gauss_beam = hp.gauss_beam(np.radians(10. / 60.), lmax=512, pol=True)
         np.testing.assert_allclose(idl_gauss_beam, gauss_beam)
 
+    def test_alm2cl(self):
+        nside = 32
+        lmax = 64
+        lmax_out = 100
+        seed = 12345
+        np.random.seed(seed)
+
+        # Input power spectrum and alm
+        alm_syn = hp.synalm(self.cla, lmax=lmax)
+
+        cl_out = hp.alm2cl(alm_syn, lmax_out=lmax_out-1)
+
+        np.testing.assert_array_almost_equal(
+            cl_out, self.cla[:lmax_out], decimal=4)
+
     def test_map2alm(self):
         nside = 32
         lmax = 64
@@ -365,6 +380,18 @@ class TestSphtFunc(unittest.TestCase):
 
         beam = hp.bl2beam(gaussian_window, theta)
         np.testing.assert_allclose(gaussian_beam, beam, rtol=1e-3)
+
+    def test_max_nside_check(self):
+        """ Test whether the max_nside_check correctly raises ValueErrors for nsides
+        that are too large."""
+
+        # Test an nside that is too large
+        with self.assertRaises(ValueError):
+            hp.check_max_nside(16384)
+        
+        # Test an nside that is valid
+        # hp.check_max_nside will return 0 if no exceptions are raised
+        self.assertEqual(hp.check_max_nside(1024), 0)
 
 
 if __name__ == "__main__":

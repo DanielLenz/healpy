@@ -463,7 +463,7 @@ setup(
         (
             "healpix_cxx",
             {
-                "pkg_config_name": "healpix_cxx >= 3.30.0",
+                "pkg_config_name": "healpix_cxx >= 3.40.0",
                 "local_source": "healpixsubmodule/src/cxx/autotools",
             },
         ),
@@ -518,7 +518,7 @@ setup(
             "test/data/*.sh",
         ]
     },
-    install_requires=["matplotlib", "numpy", "six", "astropy"],
+    install_requires=["matplotlib", "numpy", "six", "astropy", "scipy"],
     setup_requires=["pytest-runner", "six"],
     tests_require=["pytest", "pytest-cython"],
     test_suite="healpy",
